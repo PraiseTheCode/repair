@@ -8,17 +8,23 @@ re:pair [ Revising Eclipsing binaries analysis : Photometry And spectroscopy Inf
 ## 🛠 Installation
 
 This code depends on two external tools:  
-- [`ellc`](https://github.com/pmaxted/ellc) for light curve modeling  
-- `SynthV` for spectrum synthesis (included as source + binaries)
+- [`ellc`](https://github.com/pmaxted/ellc) for light curve modeling ['P. Maxted, 2016, A&A 591, A111'](https://www.aanda.org/articles/aa/pdf/2016/07/aa28579-16.pdf)
+- `SynthV` for spectrum synthesis (included as source + binaries) ['V. Tsymbal, 1996'](https://articles.adsabs.harvard.edu/pdf/1996ASPC..108..198T), ['V. Tsymbal, 2019'](https://articles.adsabs.harvard.edu/pdf/2019ASPC..518..247T)
 
-### 1. Create environment and install `ellc`
-Make sure `ellc` is installed **first**, as it sets key environment variables.
+### 1. Create environment and install `ellc` and required Python packages
+
+Make sure `ellc` is installed **first**, as it sets important environment variables.  
+Then install additional packages needed for spectrum and light curve analysis:
 
 ```bash
 conda create -n repair-env python=3.10
 conda activate repair-env
+
+# install ellc first
 conda install -c conda-forge ellc
-```
+
+# install core analysis libraries
+pip install numpy scipy matplotlib pandas seaborn astropy deap
 
 ### 2. Set up `SynthV`
 
