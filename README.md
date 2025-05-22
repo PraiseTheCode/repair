@@ -8,13 +8,13 @@ re:pair [ Revising Eclipsing binaries analysis : Photometry And spectroscopy Inf
 ## 🛠 Installation
 
 This code depends on two external tools:  
-- [`ellc`](https://github.com/pmaxted/ellc) for light curve modeling ([P. Maxted, 2016, A&A 591, A111](https://www.aanda.org/articles/aa/pdf/2016/07/aa28579-16.pdf)
-- `SynthV` for spectrum synthesis (included as source + binaries) ([V. Tsymbal, 1996](https://articles.adsabs.harvard.edu/pdf/1996ASPC..108..198T), [V. Tsymbal, 2019](https://articles.adsabs.harvard.edu/pdf/2019ASPC..518..247T) )
+- [`ellc`](https://github.com/pmaxted/ellc) for light curve modeling ([P. Maxted, 2016, A&A 591, A111](https://www.aanda.org/articles/aa/pdf/2016/07/aa28579-16.pdf))
+- `SynthV` for spectrum synthesis (included as source + executables) ([V. Tsymbal, 1996](https://articles.adsabs.harvard.edu/pdf/1996ASPC..108..198T), [V. Tsymbal, 2019](https://articles.adsabs.harvard.edu/pdf/2019ASPC..518..247T))
 
 ### 1. Create environment and install `ellc` and required Python packages
 
-Make sure `ellc` is installed **first**, as it sets important environment variables.  
-Then install additional packages needed for spectrum and light curve analysis:
+Make sure `ellc` is installed **first**, as it sets important dependencies.  
+Then install additional packages:
 
 ```bash
 conda create -n repair-env python=3.10
@@ -23,8 +23,8 @@ conda activate repair-env
 # install ellc first
 conda install -c conda-forge ellc
 
-# install core analysis libraries
-pip install numpy scipy matplotlib pandas seaborn astropy deap
+# install libraries required by re:pair
+conda install -c conda-forge numpy scipy matplotlib pandas seaborn astropy deap
 
 ### 2. Set up `SynthV`
 
@@ -49,13 +49,6 @@ cd synthV/synthV_source
 ifort -o ../synthV_executable/SynthV *.f* -zero
 ```
 
-Similarly, for the convolution tool:
-
-```bash
-cd ../convolve_source
-make
-mv convolve ../convolve_executable/
-```
 
 ### 3. Download atmospheric models (required by SynthV)
 
