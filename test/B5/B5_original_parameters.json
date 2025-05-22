@@ -1,0 +1,27 @@
+{
+    "objname" : "B5",
+    "params_init" : {
+        "r1" : 0.25,
+        "r2" : 0.15,
+        "q" : 0.75,
+        "Teff1" : 15000,
+        "Teff2" : 13000,
+	"metallicity1" : 0.0,
+	"metallicity2" : 0.0,
+        "Ve1sini" : 100.0,
+        "Ve2sini" : 50.0,
+        "heat_1" : null,
+        "heat_2" : null,
+        "gdc_1" : null,
+        "gdc_2" :  null,
+        "bfac_1" : null,
+        "bfac_2" : null,
+        "incl" : 89.0,
+        "porb" : 5.0,
+        "t0" : 2.0,
+        "a" : 29.657,
+        "f_c" : 0.0,
+        "f_s" : 0.0,
+        "l3" : 0.0,
+        "gamma" : 0.0
+    }
