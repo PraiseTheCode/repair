@@ -80,3 +80,20 @@ pip install pyqt5
 > ⚠️ Make sure your current working directory includes the main `re:pair` repo,  
 > or adjust your `PYTHONPATH` to access the local modules (like `repair`, `binary`, `orbit`, `star`, etc.).
 
+
+
+## 🚀 Usage
+
+After activating your environment and navigating to the main directory:
+
+```bash
+conda activate repair-env
+cd repair/main/
+python repair.py
+```
+
+This will launch the GA optimization routine using the settings from your provided `config.json`.
+
+An example configuration is included in `tests/B5/config.json`, together with the "observed" data for this test (it is the simulated noised data of 'B5' benchmark system from Serebriakova et al. 2025)
+
+---
