@@ -19,6 +19,7 @@ Make sure `ellc` is installed **first**, as it sets important dependencies.
 Then install additional packages:
 
 ```bash
+# create conda environment (use any convenient name instead of repair-env)
 conda create -n repair-env python=3.10
 conda activate repair-env
 
@@ -28,11 +29,13 @@ conda install -c conda-forge ellc
 # install libraries required by re:pair
 conda install -c conda-forge numpy scipy matplotlib pandas seaborn astropy deap
 
+```
+
 ### 2. Set up `SynthV`
 
-#### Option A: Use included binaries (Linux/macOS only)
+#### Option A: Use included binaries
 
-Precompiled executables are provided in `synthV/synthV_executable/` and `synthV/convolve_executable/`.  
+Precompiled executables are provided in `synthV/synthV_executable/` for both Linux and MacOS (select which one you need and remove the part "_*system*" after "SynthV"
 To test if they work:
 
 ```bash
@@ -52,8 +55,10 @@ ifort -o ../synthV_executable/SynthV *.f* -zero
 ```
 
 
-### 3. Download atmospheric models (required by SynthV)
+### 3. Download atmospheric models grid (required by SynthV)
 
-Download `LLModels.tar.gz` from  
+Download, for example, `LLModels.tar.gz` from  
 [https://fys.kuleuven.be/ster/meetings/binary-2015/gssp-software-package](https://fys.kuleuven.be/ster/meetings/binary-2015/gssp-software-package)  
 and extract it somewhere. You will later set the path to these models in the `repair` config file.
+In principle, any grids in Kurucz's format are supported, but naming convention may need to be addressed for re:pair to correctly identify grid nods.
+
