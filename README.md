@@ -97,3 +97,45 @@ This will launch the GA optimization routine using the settings from your provid
 An example configuration is included in `tests/B5/config.json`, together with the "observed" data for this test (it is the simulated noised data of 'B5' benchmark system from Serebriakova et al. 2025)
 
 ---
+
+
+### ⚙️ Configuration file: `config.json`
+
+All settings needed for running `re:pair` are defined in a single JSON file. Key sections include:
+
+#### 🔧 Paths
+| Key            | Description |
+|----------------|-------------|
+| `saveto`       | Where to save outputs |
+| `synthVpath`   | Path to SynthV executable |
+| `convolvepath` | Path to line broadening tool | - not needed by default (default behaviour is broadening via PyAstronomy modules)
+| `atmmodels`    | Folder with LLModels or other atmosphere models grid |
+| `abunds`       | Folder with abundance tables |
+| `path_specs`   | Observed spectra directory | - fits files for epochs info + normalised spectra 
+| `path_lc`      | Light curve file path |
+
+#### 🧬 Optimization control
+| Key               | Description |
+|------------------|-------------|
+| `nthreads`       | Number of threads to use |
+| `popsize`        | Size of population for GA (genetic algorithm) optimization |
+| `ngen`           | Number of generations for GA |
+| `checkpoint_interval` | Save frequency for chekpoints files - needed to run from certain generation if previous run was interrupted |
+
+#### 🪐 Initial parameters
+The parameters used to fix non-optimized parameters. The optimized parameters will be overwritten later,  but it is still useful to set some realistic parameters here because the code, before running optimization, saves a plot with model with these initial parameters, which is useful to see if the config is working as intended.
+Set in `params_init` — includes stellar radii (`r1`, `r2`), temperatures (`Teff1`, `Teff2`), mass ratio `q`, inclination, semi-major axis `a`, orbital period `porb`, etc. Most parameters names repeat those of [`ellc`](https://github.com/pmaxted/ellc); most of the parameters supported by `ellc` can be passed here. Added parameters needed for spectroscopy, such as Teff, metallicity, etc.
+
+#### 🧠 Optimization targets
+| Key            | Description |
+|----------------|-------------|
+| `params_opt`   | List of parameters to optimize |
+| `params_bounds`| Allowed ranges for all parameters | - the code will generate a Sobol grid in these ranges to use as Generation 0 of GA optimisation.
+
+---
+
+### 📈 Output
+
+The results (figures, logs, population parameters etc.) will be saved in the folder defined under `"saveto"`. You can monitor progress with intermediate output, interrupt at any stage, and continue from checkpoints. Logs may contain info and warnings omitted or lost in console output.
+
+---
