@@ -157,7 +157,7 @@ Typical (but not exhaustive) example of `params_init`:
 | `params_bounds`| Allowed ranges for all parameters | - the code will generate a Sobol grid in these ranges to use as Generation 0 of GA optimisation.
 
 
- ### ⚠️ When you switch to observed data (not noised model data), remove "`obs_mod`" = "`test`" 
+ ### ⚠️ When you switch to observed data (not noised model data), change `obsmod` from "`test`" to "`obs`" (changes expected data format) 
 
 
 ---
