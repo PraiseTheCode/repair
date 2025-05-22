@@ -2,9 +2,9 @@
 
 <img src="https://github.com/PraiseTheCode/repair/assets/32466853/f319ba55-fd3e-4970-a00b-2e97c19fbf28" width="200" height="68">
 
-re:pair [ Revising Eclipsing binaries analysis : Photometry And spectroscopy Infused Recipe ]
+***re:pair [ Revising Eclipsing binaries analysis : Photometry And spectroscopy Infused Recipe ]***
 
-re:pair is a code for simultaneous modelling of photometric and spectroscopic time series of double-lined eclipsing binaries. The code is described by Serebriakova et al. 2025, aa53605-24. The code creates a single self-consistent model of a binary that produces both its lightcurve and spectra of components, and performs a search of optimal orbital and atmospheric parameters through Multi-Objective Optimisation, using [DEAP](https://github.com/DEAP/) library.  
+`re:pair` is a code for simultaneous modelling of photometric and spectroscopic time series of double-lined eclipsing binaries. The code is described by Serebriakova et al. 2025, aa53605-24. The code creates a single self-consistent model of a binary that produces both its lightcurve and spectra of components, and performs a search of optimal orbital and atmospheric parameters through Multi-Objective Optimisation, using [`DEAP`](https://github.com/DEAP/) library.  
 
 
 ## 🛠 Installation
@@ -35,8 +35,8 @@ conda install -c conda-forge numpy scipy matplotlib pandas seaborn astropy deap
 
 #### Option A: Use included binaries
 
-Precompiled executables are provided in `synthV/synthV_executable/` for both Linux and MacOS (select which one you need and remove the part "_*system*" after "SynthV"
-To test if they work:
+Precompiled executables are provided in `synthV/synthV_executable/` for both Linux and MacOS (select which one you need and remove the part "_"system"" part after "SynthV")
+To test if it works:
 
 ```bash
 cd synthV/synthV_executable
@@ -59,6 +59,24 @@ ifort -o ../synthV_executable/SynthV *.f* -zero
 
 Download, for example, `LLModels.tar.gz` from  
 [https://fys.kuleuven.be/ster/meetings/binary-2015/gssp-software-package](https://fys.kuleuven.be/ster/meetings/binary-2015/gssp-software-package)  
-and extract it somewhere. You will later set the path to these models in the `repair` config file.
+and extract it somewhere. You will later set the path to these models in the `re:pair` config file.
 In principle, any grids in Kurucz's format are supported, but naming convention may need to be addressed for re:pair to correctly identify grid nods.
+
+### 4. (Optional) Set up GUI environment for interactive post-processing
+
+The optional graphical interface requires a separate environment with PyQt5 and related packages.
+
+```bash
+conda create -n repair-gui python=3.10
+conda activate repair-gui
+
+# Base packages
+conda install -c conda-forge numpy scipy matplotlib pandas seaborn astropy deap pillow mplcursors
+
+# GUI library
+pip install pyqt5
+```
+
+> ⚠️ Make sure your current working directory includes the main `re:pair` repo,  
+> or adjust your `PYTHONPATH` to access the local modules (like `repair`, `binary`, `orbit`, `star`, etc.).
 
