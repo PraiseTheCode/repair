@@ -4,6 +4,8 @@
 
 re:pair [ Revising Eclipsing binaries analysis : Photometry And spectroscopy Infused Recipe ]
 
+re:pair is a code for simultaneous modelling of photometric and spectroscopic time series of double-lined eclipsing binaries. The code is described by Serebriakova et al. 2025, aa53605-24. The code creates a single self-consistent model of a binary that produces both its lightcurve and spectra of components, and performs a search of optimal orbital and atmospheric parameters through Multi-Objective Optimisation, using [DEAP](https://github.com/DEAP/) library.  
+
 
 ## 🛠 Installation
 
