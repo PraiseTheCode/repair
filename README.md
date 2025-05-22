@@ -103,7 +103,7 @@ An example configuration is included in `tests/B5/config.json`, together with th
 
 All settings needed for running `re:pair` are defined in a single JSON file. Key sections include:
 
-#### 🔧 Paths
+####  Paths
 | Key            | Description |
 |----------------|-------------|
 | `saveto`       | Where to save outputs |
@@ -114,7 +114,7 @@ All settings needed for running `re:pair` are defined in a single JSON file. Key
 | `path_specs`   | Observed spectra directory | - fits files for epochs info + normalised spectra 
 | `path_lc`      | Light curve file path |
 
-#### 🧬 Optimization control
+####  Optimization control
 | Key               | Description |
 |------------------|-------------|
 | `nthreads`       | Number of threads to use |
@@ -122,18 +122,42 @@ All settings needed for running `re:pair` are defined in a single JSON file. Key
 | `ngen`           | Number of generations for GA |
 | `checkpoint_interval` | Save frequency for checkpoints files - needed to run from certain generation if previous run was interrupted |
 
-#### 🪐 Initial parameters
+####  Initial parameters
 The parameters used to fix non-optimized parameters. The optimized parameters will be overwritten later,  but it is still useful to set some realistic parameters here because the code, before running optimization, saves a plot with model with these initial parameters, which is useful to see if the config is working as intended.
-Set in `params_init` — includes stellar radii (`r1`, `r2`), temperatures (`Teff1`, `Teff2`), mass ratio `q`, inclination, semi-major axis `a`, orbital period `porb`, etc. Most parameters names repeat those of [`ellc`](https://github.com/pmaxted/ellc); most of the parameters supported by `ellc` can be passed here. Added parameters needed for spectroscopy, such as Teff, metallicity, etc.
+Set in `params_init` — includes stellar radii (`r1`, `r2`), temperatures (`Teff1`, `Teff2`), mass ratio `q`, inclination, semi-major axis `a`, orbital period `porb`, etc. Most parameter names repeat those of [`ellc`](https://github.com/pmaxted/ellc); refer to its documentation for their definition. Most of the parameters supported by `ellc` can be passed here. Also includes parameters needed for spectroscopy, such as Teff, metallicity, etc. Parameters such as limb darkening (ldc) are not usually set - specific intensities Imu from spectral synthesis used instead for self-consistency. If you set ldc here, they will overwrite default behaviour - proceed with caution.
+Typical (but not exhaustive) example of `params_init`:
 
-#### 🧠 Optimization targets
+```bash
+"params_init" : {
+        "r1" : 0.27,
+        "r2" : 0.24,
+        "q" : 0.9,
+        "Teff1" : 15800,
+        "Teff2" : 15000,
+	"metallicity1" : 0.0,
+	"metallicity2" : 0.0,
+        "Ve1sini" : 110.0,
+        "Ve2sini" : 108.0,
+        "incl" : 87.86,
+        "porb" : 1.6773459,
+        "t0" : 0.08116,
+        "a" : 12.66,
+        "f_c" : 0.00069,
+        "f_s" : 0.01878,
+        "l3" : 0.0,
+        "gamma" : -10.0
+    },
+```
+
+
+####  Optimization targets
 | Key            | Description |
 |----------------|-------------|
 | `params_opt`   | List of parameters to optimize |
 | `params_bounds`| Allowed ranges for all parameters | - the code will generate a Sobol grid in these ranges to use as Generation 0 of GA optimisation.
 
 
- ⚠️ *** When you switch to observed data (not noised model data), remove "`obs_mod`" = "`test`" ***
+ ### ⚠️ When you switch to observed data (not noised model data), remove "`obs_mod`" = "`test`" 
 
 
 ---
