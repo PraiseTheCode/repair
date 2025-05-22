@@ -120,7 +120,7 @@ All settings needed for running `re:pair` are defined in a single JSON file. Key
 | `nthreads`       | Number of threads to use |
 | `popsize`        | Size of population for GA (genetic algorithm) optimization |
 | `ngen`           | Number of generations for GA |
-| `checkpoint_interval` | Save frequency for chekpoints files - needed to run from certain generation if previous run was interrupted |
+| `checkpoint_interval` | Save frequency for checkpoints files - needed to run from certain generation if previous run was interrupted |
 
 #### 🪐 Initial parameters
 The parameters used to fix non-optimized parameters. The optimized parameters will be overwritten later,  but it is still useful to set some realistic parameters here because the code, before running optimization, saves a plot with model with these initial parameters, which is useful to see if the config is working as intended.
@@ -131,6 +131,10 @@ Set in `params_init` — includes stellar radii (`r1`, `r2`), temperatures (`Tef
 |----------------|-------------|
 | `params_opt`   | List of parameters to optimize |
 | `params_bounds`| Allowed ranges for all parameters | - the code will generate a Sobol grid in these ranges to use as Generation 0 of GA optimisation.
+
+
+ ⚠️ *** When you switch to observed data (not noised model data), remove "`obs_mod`" = "`test`" ***
+
 
 ---
 
@@ -153,3 +157,4 @@ python beyond_repair.py config_B5st.json --stepgen 20
 ```
 
 This will open an interactive GUI useful for parameter space exploration, estimating errors, evolution tracking, etc.
+
