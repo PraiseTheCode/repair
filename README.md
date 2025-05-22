@@ -139,3 +139,17 @@ Set in `params_init` — includes stellar radii (`r1`, `r2`), temperatures (`Tef
 The results (figures, logs, population parameters etc.) will be saved in the folder defined under `"saveto"`. You can monitor progress with intermediate output, interrupt at any stage, and continue from checkpoints. Logs may contain info and warnings omitted or lost in console output.
 
 ---
+
+## 🖼 Optional: Visualize results with `beyond_repair` GUI
+
+If you have installed the optional GUI environment (see Step 4), you can use the PyQt-based interface to explore precomputed model results interactively.
+
+To run it:
+
+```bash
+conda activate repair-gui
+cd repair/main/
+python beyond_repair.py config_B5st.json --stepgen 20
+```
+
+This will open an interactive GUI useful for parameter space exploration, estimating errors, evolution tracking, etc.
